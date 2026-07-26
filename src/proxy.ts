@@ -23,7 +23,21 @@ export async function proxy(request: NextRequest) {
     }
   })
 
-  await supabase.auth.getUser()
+  const {
+    data: { user }
+  } = await supabase.auth.getUser()
+  const pathname = request.nextUrl.pathname
+
+  const authRouterPattern = /\/(login|register|entrar|registrarse)$/
+  const isAuthPage = authRouterPattern.test(pathname)
+
+  if (user && isAuthPage) {
+    const redirectUrl = request.nextUrl.clone()
+
+    redirectUrl.pathname = pathname.replace(authRouterPattern, '') || '/'
+
+    return NextResponse.redirect(redirectUrl)
+  }
 
   return response
 }

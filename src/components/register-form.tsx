@@ -24,7 +24,7 @@ import {
   FormMessage
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { useAuth, useAuthStatus } from '@/hooks/useAuth'
+import { useAuth } from '@/hooks/useAuth'
 import { Link } from '@/i18n/navigation'
 import { Spinner } from './ui/spinner'
 
@@ -35,16 +35,9 @@ import { Spinner } from './ui/spinner'
  */
 export function RegisterForm(): JSX.Element {
   const { registerWithEmail, signInWithGoogle } = useAuth()
-  const { isAuthenticated } = useAuthStatus()
   const t = useTranslations('register')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      router.replace('/')
-    }
-  }, [isAuthenticated, router])
 
   // Define el esquema de validación del formulario con Zod.
   const formSchema = z.object({
@@ -70,6 +63,7 @@ export function RegisterForm(): JSX.Element {
   async function onSubmit(values: z.infer<typeof formSchema>): Promise<void> {
     setIsLoading(true)
     await registerWithEmail(values)
+    router.replace('/')
     setIsLoading(false)
   }
 

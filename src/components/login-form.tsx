@@ -3,7 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { type JSX, useEffect, useState } from 'react'
+import { type JSX, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { GoogleIcon } from '@/components/icons'
@@ -24,7 +24,7 @@ import {
   FormMessage
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { useAuth, useAuthStatus } from '@/hooks/useAuth'
+import { useAuth } from '@/hooks/useAuth'
 import { Link } from '@/i18n/navigation'
 import { Spinner } from './ui/spinner'
 
@@ -35,16 +35,9 @@ import { Spinner } from './ui/spinner'
  */
 export function LoginForm(): JSX.Element {
   const { signInWithEmail, signInWithGoogle } = useAuth()
-  const { isAuthenticated } = useAuthStatus()
   const t = useTranslations('login')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      router.replace('/')
-    }
-  }, [isAuthenticated, router.replace])
 
   // Define el esquema de validación del formulario con Zod.
   const formSchema = z.object({
@@ -68,6 +61,7 @@ export function LoginForm(): JSX.Element {
   async function onSubmit(values: z.infer<typeof formSchema>): Promise<void> {
     setIsLoading(true)
     await signInWithEmail(values)
+    router.replace('/')
     setIsLoading(false)
   }
 
