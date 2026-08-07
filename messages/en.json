@@ -144,6 +144,14 @@
       "description": "Lyrics, chords and video available for practice on Rangel Guitar."
     }
   },
+  "artistCard": {
+    "song": "{count} Song",
+    "songs": "{count} Songs"
+  },
+  "artistHeader": {
+    "add": "Add",
+    "artist": "Artist{word}"
+  },
   "appName": "Rangel Guitar",
   "appDescription": "Your destination for guitar tabs and songs.",
   "searchPlaceholder": "Search by song or artist...",
@@ -237,7 +245,6 @@
   "requestSentTitle": "Request Sent!",
   "requestErrorTitle": "Error",
   "requestErrorDescription": "There was an error sending your request. Please try again.",
-  "admin": "Admin",
   "songRequestsTitle": "Song Requests",
   "songRequestsDescription": "Here are the songs requested by users.",
   "tableTitle": "Title",

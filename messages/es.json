@@ -144,6 +144,14 @@
       "description": "letra, acordes y video disponibles para practicar disponible en Rangel Guitar."
     }
   },
+  "artistCard": {
+    "song": "{count} Canción",
+    "songs": "{count} Canciones"
+  },
+  "artistHeader": {
+    "add": "Agregar",
+    "artist": "Artista{word}"
+  },
   "appName": "Rangel Guitar",
   "appDescription": "Tu destino para tablaturas y canciones de guitarra.",
   "searchPlaceholder": "Buscar por canción o artista...",
@@ -237,7 +245,6 @@
   "requestSentTitle": "¡Solicitud Enviada!",
   "requestErrorTitle": "Error",
   "requestErrorDescription": "Ocurrió un error al enviar tu solicitud. Por favor, intenta de nuevo.",
-  "admin": "Admin",
   "songRequestsTitle": "Solicitudes de Canciones",
   "songRequestsDescription": "Aquí están las canciones solicitadas por los usuarios.",
   "tableTitle": "Título",
