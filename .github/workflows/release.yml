@@ -35,5 +35,6 @@ jobs:
         run: bunx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HUSKI: 0
           # Si planeas publicar en NPM, necesitarías añadir también:
           # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
