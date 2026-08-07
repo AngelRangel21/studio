@@ -32,9 +32,8 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Release
-        run: bunx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          HUSKI: 0
-          # Si planeas publicar en NPM, necesitarías añadir también:
-          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+        run: bunx semantic-release
