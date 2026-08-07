@@ -1,8 +1,9 @@
 import { User } from 'lucide-react'
 import Image from 'next/image'
-import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import type { JSX } from 'react'
 import { Card } from '@/components/ui/card'
+import { Link } from '@/i18n/navigation'
 import { getArtistImage } from '@/services/artists.service'
 import type { ArtistCount } from '@/types/app.types'
 
@@ -13,6 +14,7 @@ import type { ArtistCount } from '@/types/app.types'
  * @returns {JSX.Element} La tarjeta del artista.
  */
 export function ArtistCard({ artist }: { artist: ArtistCount }): JSX.Element {
+  const t = useTranslations('artistCard')
   const songCount = artist.count ?? 0
 
   const imageUrl = artist.image_url
@@ -22,7 +24,7 @@ export function ArtistCard({ artist }: { artist: ArtistCount }): JSX.Element {
   return (
     // Enlace que envuelve toda la tarjeta para la navegación.
     <Link
-      href={`/artists/${artist.slug}`}
+      href={{ pathname: '/artists/[slug]', params: { slug: `${artist.slug}` } }}
       aria-label={`Ver canciones de ${artist.name}`}
     >
       <Card className='group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border-transparent bg-card w-full h-full cursor-pointer flex flex-col'>
@@ -51,11 +53,11 @@ export function ArtistCard({ artist }: { artist: ArtistCount }): JSX.Element {
           </h3>
           {songCount === 1 ? (
             <p className='flex flex-row text-xs text-muted-foreground truncate'>
-              {songCount} canción
+              {t('song', { count: `${songCount}` })}
             </p>
           ) : (
             <p className='flex flex-row text-xs text-muted-foreground truncate'>
-              {songCount} canciones
+              {t('songs', { count: `${songCount} ` })}
             </p>
           )}
         </div>

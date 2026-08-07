@@ -1,9 +1,9 @@
 'use client'
 
-import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import type { JSX } from 'react'
 import { FacebookIcon, TelegramIcon, WhatsAppIcon } from '@/components/icons'
+import { Link } from '@/i18n/navigation'
 import { PayPal } from './components/PayPal'
 
 export function Footer(): JSX.Element {
@@ -48,7 +48,7 @@ export function Footer(): JSX.Element {
             </p>
             <nav className='flex justify-center md:justify-end gap-3'>
               {social.map((social) => (
-                <Link
+                <a
                   key={social.href}
                   href={social.href}
                   aria-label={social.label}
@@ -56,7 +56,7 @@ export function Footer(): JSX.Element {
                   className='p-2.5 bg-muted rounded-full hover:bg-accent hover:text-accent-foreground transition-all duration-200 hover:scale-110'
                 >
                   {social.icon}
-                </Link>
+                </a>
               ))}
             </nav>
           </div>

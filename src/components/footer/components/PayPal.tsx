@@ -1,5 +1,4 @@
 import { Coffee } from 'lucide-react'
-import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import type { JSX } from 'react'
 
@@ -7,7 +6,7 @@ export function PayPal(): JSX.Element {
   const t = useTranslations('footer')
   return (
     <div className='flex justify-center'>
-      <Link
+      <a
         target='_blank'
         rel='noopener noreferrer'
         href='https://www.paypal.com/paypalme/angelrangelm'
@@ -15,7 +14,7 @@ export function PayPal(): JSX.Element {
       >
         <Coffee className='h-5 w-5' />
         {t('paypal')}
-      </Link>
+      </a>
     </div>
   )
 }

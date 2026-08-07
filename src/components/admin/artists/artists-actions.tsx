@@ -1,8 +1,8 @@
 import { Music, Pencil } from 'lucide-react'
-import Link from 'next/link'
 import type { JSX } from 'react'
 import { DeleteArtistButton } from '@/components/delete-artist-button'
 import { Button } from '@/components/ui/button'
+import { Link } from '@/i18n/navigation'
 import type { Artist } from '@/types/app.types'
 
 export function ArtistsActions({
@@ -17,13 +17,22 @@ export function ArtistsActions({
   return (
     <div className='flex justify-end gap-1'>
       <Button variant='ghost' size='icon' className='size-8' asChild>
-        <Link href={`/artists/${artist.slug}`} aria-label={viewSongsLabel}>
+        <Link
+          href={{
+            pathname: '/artists/[slug]',
+            params: { slug: `${artist.slug}` }
+          }}
+          aria-label={viewSongsLabel}
+        >
           <Music className='size-4' />
         </Link>
       </Button>
       <Button variant='outline' size='icon' className='size-8' asChild>
         <Link
-          href={`/admin/artists/${artist.slug}/edit`}
+          href={{
+            pathname: '/admin/artists/[slug]/edit',
+            params: { slug: `${artist.slug}` }
+          }}
           aria-label={editLabel}
         >
           <Pencil className='size-4' />

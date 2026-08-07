@@ -1,9 +1,10 @@
 import { Plus } from 'lucide-react'
-import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import type { JSX } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Link } from '@/i18n/navigation'
 
 export function ArtistsHeader({
   title,
@@ -14,6 +15,7 @@ export function ArtistsHeader({
   description: string
   total: number
 }): JSX.Element {
+  const t = useTranslations('artistHeader')
   return (
     <CardHeader>
       <div className='flex items-start justify-between gap-4'>
@@ -25,11 +27,11 @@ export function ArtistsHeader({
           <Button variant='default' size='sm' asChild>
             <Link href='/admin/upload-artist'>
               <Plus className='size-4' />
-              Agregar
+              {t('add')}
             </Link>
           </Button>
           <Badge variant='secondary'>
-            {total} artista{total !== 1 ? 's' : ''}
+            {total} {t('artist', { word: total !== 1 ? 's' : '' })}
           </Badge>
         </div>
       </div>

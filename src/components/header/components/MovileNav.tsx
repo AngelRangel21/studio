@@ -1,10 +1,10 @@
 import { Menu, X } from 'lucide-react'
-import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { type ComponentProps, useState } from 'react'
 // import { ThemeToggle } from '@/components/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/hooks/useAuth'
+import { Link } from '@/i18n/navigation'
 import { AvatarUser } from './AvatarUser'
 import { Notifications } from './Notifications'
 

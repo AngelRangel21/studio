@@ -17,8 +17,17 @@ export const routing = defineRouting({
     '/artists/[slug]': {
       es: '/artistas/[slug]'
     },
+    '/artists/[slug]/edit': {
+      es: '/artistas/[slug]/editar'
+    },
+    '/admin/artists/[slug]/edit': {
+      es: '/artistas/[slug]/editar'
+    },
     '/songs/[slug]': {
       es: '/cancion/[slug]'
+    },
+    '/songs/[slug]/edit': {
+      es: '/cancion/[slug]/editar'
     },
     '/request-song': {
       es: '/solicitar-cancion'
@@ -37,6 +46,18 @@ export const routing = defineRouting({
     },
     '/admin/upload-song': {
       es: '/admin/subir-cancion'
+    },
+    '/admin/upload-artist': {
+      es: '/admin/subir-artista'
+    },
+    '/privacy-policy': {
+      es: '/politica-de-privacidad'
+    },
+    '/security': {
+      es: '/seguridad'
+    },
+    '/cookie-policy': {
+      es: '/politica-de-cookies'
     }
   }
 })

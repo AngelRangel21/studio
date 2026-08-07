@@ -1,7 +1,7 @@
 'use client'
 
 import { Pencil, Trash2 } from 'lucide-react'
-import Link from 'next/link'
+import { useLocale } from 'next-intl'
 import { type JSX, useState } from 'react'
 import {
   FacebookIcon,
@@ -20,6 +20,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useI18n } from '@/context/i18n-context'
 import { useAuth } from '@/hooks/useAuth'
+import { Link } from '@/i18n/navigation'
 import type { SongWithArtist } from '@/types/app.types'
 import { DeleteSongDialog } from './delete-song-dialog'
 import { FavoriteButton } from './favorite-button'
@@ -50,6 +51,7 @@ export function SongDisplay({
     (suggestedSong, index, self) =>
       index === self.findIndex((s) => s.id === suggestedSong.id)
   )
+  const shareUrl = typeof window !== 'undefined' ? window.location.href : ''
 
   const shareText = t('shareText', { title: songTitle, artist: artistsName })
 
@@ -90,7 +92,12 @@ export function SongDisplay({
                   </span>
                   <div className='flex justify-center gap-4'>
                     <Button asChild variant='outline'>
-                      <Link href={`/songs/${songSlug}/edit`}>
+                      <Link
+                        href={{
+                          pathname: '/songs/[slug]/edit',
+                          params: { slug: `${songSlug}` }
+                        }}
+                      >
                         <Pencil className='mr-2' /> {t('edit')}
                       </Link>
                     </Button>
@@ -119,20 +126,15 @@ export function SongDisplay({
                   {t('share')}
                 </h3>
                 <div className='flex justify-center gap-4'>
-                  <Button
-                    variant='outline'
-                    size='icon'
-                    onClick={() =>
-                      window.open(
-                        `https://www.facebook.com/sharer/sharer.php?text=${encodeURIComponent(
-                          shareText
-                        )}`,
-                        '_blank'
-                      )
-                    }
-                    aria-label={t('shareOnFacebook')}
-                  >
-                    <FacebookIcon className='h-5 w-5 text-blue-600' />
+                  <Button variant='outline' size='icon' asChild>
+                    <a
+                      href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`}
+                      target='_blank'
+                      rel='noopener noreferer'
+                      aria-label={t('shareOnFacebook')}
+                    >
+                      <FacebookIcon className='h-5 w-5 text-blue-600' />
+                    </a>
                   </Button>
                   <Button
                     variant='outline'

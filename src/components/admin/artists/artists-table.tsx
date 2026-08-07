@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import type { JSX } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
@@ -9,6 +8,7 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table'
+import { Link } from '@/i18n/navigation'
 import type { Artist } from '@/types/app.types'
 import { ArtistsActions } from './artists-actions'
 
@@ -90,7 +90,10 @@ export function ArtistsTable({
                 </Avatar>
                 <div className='min-w-0'>
                   <Link
-                    href={`/artists/${artist.slug}`}
+                    href={{
+                      pathname: '/artists/[slug]',
+                      params: { slug: `${artist.slug}` }
+                    }}
                     className='font-medium hover:underline truncate block'
                   >
                     {artist.name}
