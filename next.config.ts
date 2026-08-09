@@ -104,6 +104,16 @@ const nextConfig: NextConfig = {
         source: '/songs/la-revancha-t3r-elemento',
         destination: '/es/cancion/la-revancha',
         permanent: true
+      },
+      {
+        source: '/es/cancion/botella-tras-botellas',
+        destination: '/es/cancion/botella-tras-botellas',
+        permanent: true
+      },
+      {
+        source: '/en/songs/botella-tras-botellas',
+        destination: '/en/songs/botella-tras-botellas',
+        permanent: true
       }
     ]
   },
