@@ -107,12 +107,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/es/cancion/botella-tras-botellas',
-        destination: '/es/cancion/botella-tras-botellas',
+        destination: '/es/cancion/botella-tras-botella',
         permanent: true
       },
       {
         source: '/en/songs/botella-tras-botellas',
-        destination: '/en/songs/botella-tras-botellas',
+        destination: '/en/songs/botella-tras-botella',
         permanent: true
       }
     ]
